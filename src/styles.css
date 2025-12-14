@@ -1,1 +1,117 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&display=swap');
+
+:root {
+  /* FONTS */
+  --font-family-primary: DM Sans, sans-serif; /* 300, 500, 600, 600 italic, 700 */
+  --font-family-secundary: 'Bricolage Grotesque', sans-serif; /* 700 */
+
+  /* COLORS */
+  --Neutral-900: hsl(243, 96%, 9%);
+  --Neutral-800: hsl(243, 27%, 20%);
+  --Neutral-700: hsl(243, 23%, 24%);
+  --Neutral-600: hsl(243, 23%, 30%);
+  --Neutral-300: hsl(240, 6%, 70%);
+  --Neutral-200: hsl(250, 6%, 84%);
+  --Neutral-0: hsl(0, 0%, 100%);
+
+  --Orange-500: hsl(28, 100%, 52%);
+
+  --Blue-500: hsl(233, 67%, 56%);
+  --Blue-700: hsl(248, 70%, 36%);
+}
+
+/* GLOBALS */
+
+body {
+  background-color: var(--Neutral-900);
+  color: hsl(243, 23%, 30%);
+  font-family: var(--font-family-primary);
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto
+}
+
+/* ========== */
+/* SEARCH BAR */
+/* ========== */
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+  align-items: center;
+}
+
+.nav_options {
+  position: relative;
+  display: inline-block;
+}
+
+.nav_options:hover .options {
+  clip-path: circle(150% at center top);
+}
+
+.btn-options {
+  border: none;
+  outline: none;
+  padding: .5rem;
+  border-radius: 1rem;
+  background-color: var(--Neutral-600);
+  color: white;
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  clip-path: circle(0% at top center);
+  transition: .5s clip-path;
+  background-color: var(--Neutral-800);
+  color: white;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  z-index: 1;
+}
+
+.opt {
+  border-top: 1px solid;
+  margin: .8rem 0 0 0 ;
+}
+
+.opt:first-child {
+  border: none;
+}
+
+.opt p {
+  padding: .5rem;
+  margin: .4rem 0;
+  border-radius: .5rem;
+}
+
+.unit-selected {
+  background-color: var(--Neutral-600);
+
+}
+
+.opt p:hover {
+  cursor: pointer;
+}
+
+.opt h5 {
+  margin-top: .7rem;
+}
