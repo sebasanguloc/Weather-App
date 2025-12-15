@@ -2,132 +2,35 @@
   <div class="info_title">
     <h4>Hourly Forecast</h4>
     <div class="nav_options">
-      <button class="btn-options">⚙️ Day ▼</button>
+      @if (daySelected() === null) {
+        <button class="btn-options">⚙️ Day ▼</button>
+      } @else {
+        <button class="btn-options">⚙️ {{ daySelected().day.slice(0,3) }} ▼</button>
+      }
       <div class="options">
-        <div class="opt">
-          <p class="unit-selected">Monday</p>
-        </div>
-        <div class="opt">
-          <p >Tuesday</p>
-        </div>
-        <div class="opt">
-          <p >Wednesday</p>
-        </div>
-        <div class="opt">
-          <p >Thursday</p>
-        </div>
-        <div class="opt">
-          <p >Friday</p>
-        </div>
-        <div class="opt">
-          <p >Saturday</p>
-        </div>
-        <div class="opt">
-          <p >Sunday</p>
-        </div>
+        @for(day of days(); track day.day) {
+          <div class="opt">
+            <p
+            [class.unit-selected]="day.day === daySelected().day"
+            (click)="changeDaySelected(day)"
+            >{{ day.day }}</p>
+          </div>
+        }
       </div>
     </div>
   </div>
   <div class="times">
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
+    @for (hour of hoursDaySelected(); track hour.time) {
+      <div class="time">
+        <div class="first_info">
+          <img [src]="weatherIconsMapper[hour.weatherCode]">
+          <h4>{{ hour.time }}</h4>
+        </div>
+        <div class="second_info">
+          <p>{{ hour.temperature }}°</p>
+        </div>
       </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
-    <div class="time">
-      <div class="first_info">
-        <img src="images/icon-overcast.webp">
-        <h4>3 PM</h4>
-      </div>
-      <div class="second_info">
-        <p>20°</p>
-      </div>
-    </div>
+    }
 
   </div>
 </div>

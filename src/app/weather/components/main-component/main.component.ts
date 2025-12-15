@@ -17,7 +17,6 @@ export class MainComponent {
 
   updateWeatherData = effect(() => {
     this.weatherData.set(this.weathService.weatherDataFinded());
-    console.log(this.weatherData());
   });
 
 

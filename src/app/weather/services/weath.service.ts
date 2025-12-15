@@ -46,7 +46,10 @@ export class WeathService {
         timezone: location.timezone,
         current: 'temperature_2m,weather_code,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation',
         hourly: 'temperature_2m,weather_code',
-        daily: 'temperature_2m_min,temperature_2m_max,weather_code'
+        daily: 'temperature_2m_min,temperature_2m_max,weather_code',
+        temperature_unit: this.weathSettings().temperature,
+        wind_speed_unit: this.weathSettings().windSpeed,
+        precipitation_unit: this.weathSettings().precipitation
       }
     })
     .subscribe(result => this.weatherDataFinded.set(WeatherMapper.WeatherToWeatherUI(result,location)));

@@ -35,6 +35,7 @@ export class HeaderComponent {
 
   setPrecipitation(unit: PrecipitationUnit){
     this.weathService.weathSettings.update(s =>({...s,precipitation: unit}));
+    this.weathService.searchWeather(this.weathService.weatherDataFinded()?.currentDay.location!);
   }
 
   searchLocation(location: string){

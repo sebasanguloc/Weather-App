@@ -3,6 +3,34 @@ import { CurrentDay, DailyUnits, Day, Hour, Weather, WeatherUI } from "../interf
 import moment from 'moment';
 export class WeatherMapper {
 
+  static objectHour: Record<string, string>  = {
+    "00": '12 AM',
+    '01': '1 AM',
+    '02': '2 AM',
+    '03': '3 AM',
+    '04': '4 AM',
+    '05': '5 AM',
+    '06': '6 AM',
+    '07': '7 AM',
+    '08': '8 AM',
+    '09': '9 AM',
+    '10': '10 AM',
+    '11': '11 AM',
+    '12': '12 PM',
+    '13': '1 PM',
+    '14': '2 PM',
+    '15': '3 PM',
+    '16': '4 PM',
+    '17': '5 PM',
+    '18': '6 PM',
+    '19': '7 PM',
+    '20': '8 PM',
+    '21': '9 PM',
+    '22': '10 PM',
+    '23': '11 PM',
+
+  }
+
   static WeatherToWeatherUI(weather: Weather, locationUI: LocationUI): WeatherUI {
     moment.locale('en');
     const dateWeather = moment(weather.current.time).format('dddd, MMM D, YYYY');
@@ -11,11 +39,11 @@ export class WeatherMapper {
       location: locationUI,
       date: dateWeather,
       weatherCode: weather.current.weather_code,
-      temperature: weather.current.temperature_2m,
-      feelsLike: weather.current.apparent_temperature,
-      humidity: weather.current.relative_humidity_2m,
-      wind: weather.current.wind_speed_10m,
-      precipitation: weather.current.precipitation
+      temperature: Math.round(weather.current.temperature_2m),
+      feelsLike: Math.round(weather.current.apparent_temperature),
+      humidity: Math.round(weather.current.relative_humidity_2m),
+      wind: Math.round(weather.current.wind_speed_10m),
+      precipitation: Math.round(weather.current.precipitation),
     };
 
     const daysDate: string[] = weather.daily.time;
@@ -39,7 +67,8 @@ export class WeatherMapper {
 
       for(let y = 0; y < 24; y++){
         const hour: Hour = {
-          time: hoursPerDay[i][y],
+          time: this.objectHour[moment(hoursPerDay[i][y]).format('HH').toString()],
+          // time: hoursPerDay[i][y],
           temperature: temperaturePerHour[i][y],
           weatherCode: weatherCodePerHour[i][y]
         }

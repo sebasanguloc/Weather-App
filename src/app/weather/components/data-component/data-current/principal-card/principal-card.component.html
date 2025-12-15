@@ -1,10 +1,10 @@
 <div class="principal_card" [style.backgroundImage]="'url(' + backgroundImageUrl() + ')'">
   <div class="today_left">
-    <h3>Berlin, Germany</h3>
-    <p>Tuesday, Aug 5, 2025</p>
+    <h3>{{ infoCard()?.location?.timezone }}</h3>
+    <p>{{ infoCard()?.date }}</p>
   </div>
   <div class="today_right">
-    <img src="images/icon-sunny.webp" alt="sun_icon">
-    <p>20°</p>
+    <img [src]="weatherIconsMap()" alt="sun_icon">
+    <p>{{ infoCard()?.temperature }}°</p>
   </div>
 </div>

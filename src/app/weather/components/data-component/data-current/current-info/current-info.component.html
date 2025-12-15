@@ -1,18 +1,18 @@
 <div class="today_info">
   <div class="litle_card">
     <h5>Feels Like</h5>
-    <p>18°</p>
+    <p>{{ currentInfo()?.feelsLike }}°</p>
   </div>
   <div class="litle_card">
     <h5>Humidity</h5>
-    <p>46%</p>
+    <p>{{ currentInfo()?.humidity }}%</p>
   </div>
   <div class="litle_card">
     <h5>Wind</h5>
-    <p>14 km/h</p>
+    <p>{{ currentInfo()?.wind }} km/h</p>
   </div>
   <div class="litle_card">
     <h5>Precipitation</h5>
-    <p>0 mm</p>
+    <p>{{ currentInfo()?.precipitation }} mm</p>
   </div>
 </div>
