@@ -1,0 +1,36 @@
+
+/* ===== TODAY INFO =====*/
+
+.today_info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 2rem;
+  place-items: center;
+  margin-top: 2rem;
+}
+
+.litle_card {
+  width: 15rem;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: 200;
+  background-color: var(--Neutral-800);
+  border: 1px solid var(--Neutral-600);
+}
+
+.litle_card p {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+
+.litle_card h5 {
+  color: var(--Neutral-300);
+}
+
+@media (min-width: 768px) {
+  .today_info {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

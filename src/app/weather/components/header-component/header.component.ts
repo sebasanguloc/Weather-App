@@ -1,6 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, output, signal } from '@angular/core';
 import { WeathService } from '../../services/weath.service';
 import { PrecipitationUnit, TemperatureUnit, WindSpeedUnit } from '../../interfaces/units.enum';
+import { LocationUI } from '../../interfaces/location.interface';
+import { WeatherUI } from '../../interfaces/weather.interface';
 
 @Component({
   selector: 'header-component',
@@ -11,6 +13,9 @@ import { PrecipitationUnit, TemperatureUnit, WindSpeedUnit } from '../../interfa
 export class HeaderComponent {
 
   weathService = inject(WeathService);
+
+  locations = signal<LocationUI[]>([]);
+  locationInput = signal<string>('');
 
   temperature = signal<TemperatureUnit>(this.weathService.weathSettings().temperature);
   windSpeed = signal<WindSpeedUnit>(this.weathService.weathSettings().windSpeed);
@@ -31,5 +36,20 @@ export class HeaderComponent {
   setPrecipitation(unit: PrecipitationUnit){
     this.weathService.weathSettings.update(s =>({...s,precipitation: unit}));
   }
+
+  searchLocation(location: string){
+    this.locationInput.set(location);
+    this.cleanLocations();
+    this.weathService.findLocations(location).subscribe(locationsApi => this.locations.set(locationsApi));
+  }
+
+  cleanLocations(){
+    this.locations.set([]);
+  }
+
+  searchWeather(location: LocationUI) {
+    this.weathService.searchWeather(location);
+  }
+
 }
 

@@ -1,0 +1,51 @@
+/* ===== PRINCIPAL CARD =====*/
+.principal_card {
+  width: 100%;
+  /* background: url('images/bg-today-small.svg'); */
+  background-repeat: no-repeat;
+  display: flex;
+  background-position: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: white;
+}
+
+.today_left {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.today_left h3 {
+  font-size: 3rem;
+}
+
+.today_right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.today_right img {
+  width: 15rem;
+}
+
+.today_right p {
+  font-size: 9rem;
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .principal_card {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .today_left {
+      text-align: left;
+  }
+}

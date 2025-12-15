@@ -1,0 +1,8 @@
+/* ===== LEFT ===== */
+.info_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+

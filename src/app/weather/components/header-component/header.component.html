@@ -4,7 +4,7 @@
   <div class="nav">
     <!-- Logo -->
     <div class="nav_logo">
-      <img src="images/logo.svg" alt="Weather App logo">
+      <img src="images/logo.svg" alt="Weather App logo" />
     </div>
     <!-- Button Options -->
     <div class="nav_options">
@@ -13,36 +13,63 @@
         <div class="windSpeed opt">
           <h5>Temperature</h5>
           <p
-            [class.unit-selected]="TemperatureUnit.Celsius === weathService.weathSettings().temperature"
+            [class.unit-selected]="
+              TemperatureUnit.Celsius ===
+              weathService.weathSettings().temperature
+            "
             (click)="setTemperature(TemperatureUnit.Celsius)"
-            >Celcius (C°)</p>
-            <p
-            [class.unit-selected]="TemperatureUnit.Fahrenheit === weathService.weathSettings().temperature"
+          >
+            Celcius (C°)
+          </p>
+          <p
+            [class.unit-selected]="
+              TemperatureUnit.Fahrenheit ===
+              weathService.weathSettings().temperature
+            "
             (click)="setTemperature(TemperatureUnit.Fahrenheit)"
-            >Farenheit (F°)</p>
-          </div>
-          <div class="wind-speed_opt opt">
-            <h5>Wind Speed</h5>
-            <p
-            [class.unit-selected]="WindSpeedUnit.KmH === weathService.weathSettings().windSpeed"
+          >
+            Farenheit (F°)
+          </p>
+        </div>
+        <div class="wind-speed_opt opt">
+          <h5>Wind Speed</h5>
+          <p
+            [class.unit-selected]="
+              WindSpeedUnit.KmH === weathService.weathSettings().windSpeed
+            "
             (click)="setWindSpeed(WindSpeedUnit.KmH)"
-            >km/h</p>
-            <p
-            [class.unit-selected]="WindSpeedUnit.Mph === weathService.weathSettings().windSpeed"
+          >
+            km/h
+          </p>
+          <p
+            [class.unit-selected]="
+              WindSpeedUnit.Mph === weathService.weathSettings().windSpeed
+            "
             (click)="setWindSpeed(WindSpeedUnit.Mph)"
-            >mph</p>
-          </div>
-          <div class="precipitation_opt opt">
-            <h5>Precipitation</h5>
-            <p
-            [class.unit-selected]="PrecipitationUnit.Millimeters === weathService.weathSettings().precipitation"
+          >
+            mph
+          </p>
+        </div>
+        <div class="precipitation_opt opt">
+          <h5>Precipitation</h5>
+          <p
+            [class.unit-selected]="
+              PrecipitationUnit.Millimeters ===
+              weathService.weathSettings().precipitation
+            "
             (click)="setPrecipitation(PrecipitationUnit.Millimeters)"
-
-            >Milimeters(mm)</p>
-            <p
-            [class.unit-selected]="PrecipitationUnit.Inches === weathService.weathSettings().precipitation"
+          >
+            Milimeters(mm)
+          </p>
+          <p
+            [class.unit-selected]="
+              PrecipitationUnit.Inches ===
+              weathService.weathSettings().precipitation
+            "
             (click)="setPrecipitation(PrecipitationUnit.Inches)"
-          >Inches(in)</p>
+          >
+            Inches(in)
+          </p>
         </div>
       </div>
     </div>
@@ -54,22 +81,27 @@
     <div class="search_bar_c">
       <div class="input_bar">
         <i class="ti ti-search"></i>
-        <input type="text" placeholder="Search for a place..." />
+        <input
+          type="text"
+          placeholder="Search for a place..."
+          [value]="locationInput()"
+          (input)="searchLocation(txtLocation.value)"
+          (focus)="cleanLocations()"
+          (blur)="locationInput.set('')"
+          #txtLocation
+        />
       </div>
       <div class="search_options">
         <ul>
-          <li>Option 1</li>
-          <li>Option 2</li>
-          <li>Option 3</li>
-          <li>Option 4</li>
-          <li>Option 5</li>
-          <li>Option 6</li>
-          <li>Option 7</li>
-          <li>Option 8</li>
-          <li>Option 9</li>
-          <li>Option 10</li>
-          <li>Option 11</li>
-          <li>Option 12</li>
+          @if(locations().length === 0){
+          <li>Without Results...</li>
+          } @for (location of locations(); track location.id) {
+          <li
+            (click)="searchWeather(location)"
+          >
+            {{ txtLocation.value }} - <span> {{ location.timezone }} | {{ location.latitude }} - {{ location.longitud }} </span>
+          </li>
+          }
         </ul>
       </div>
     </div>

@@ -1,0 +1,54 @@
+
+/* ===== DAILY FORECAST ===== */
+
+.daily_forecast {
+  margin-top: 3rem;
+  display: grid;
+}
+
+.daily_forecast h4 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.daily_info {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  place-items: center;
+  gap: 1rem;
+}
+
+.day_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: var();
+  background-color: var(--Neutral-800);
+  border: 1px solid var(--Neutral-600);
+  color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.day_card h5 {
+  font-size: 1.5rem;
+}
+
+.day_card img {
+  width: 8rem;
+}
+
+.day_info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 1.4rem;
+}
+
+@media (min-width: 768px) {
+  .daily_info {
+      grid-template-columns: repeat(7,1fr);
+  }
+}

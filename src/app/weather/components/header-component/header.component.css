@@ -90,11 +90,16 @@
 }
 
 .search_options li:hover {
-  background-color: var(--Neutral-600);
+  background-color: var(--Neutral-700);
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
   .search_bar_c {
       width: 60%;
   }
+}
+
+.search_options span {
+  color: var(--Blue-700);
 }

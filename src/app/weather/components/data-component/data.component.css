@@ -1,0 +1,12 @@
+
+@media (min-width: 768px) {
+  .c_info {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 2rem;
+  }
+}
+
+.c_info {
+  padding: 2rem;
+}

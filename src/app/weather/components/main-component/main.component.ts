@@ -1,12 +1,24 @@
-import { Component, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
+import { WeathService } from '../../services/weath.service';
+import { WeatherUI } from '../../interfaces/weather.interface';
+import { DataComponent } from '../data-component/data.component';
 
 @Component({
   selector: 'main-component',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
+  imports: [DataComponent]
 })
-export class NombreComponent {
+export class MainComponent {
 
-  backgroundImageUrl = signal<string>('images/bg-today-small.svg');
+  weathService = inject(WeathService);
+
+  weatherData = signal<WeatherUI | null>(null);
+
+  updateWeatherData = effect(() => {
+    this.weatherData.set(this.weathService.weatherDataFinded());
+    console.log(this.weatherData());
+  });
+
 
 }
